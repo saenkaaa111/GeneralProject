@@ -12,7 +12,7 @@ namespace Homework2
             int b = GetNumberFromUser("Введите число B:");
             double result = CalcFormula(a, b);
             Console.WriteLine($"Результат первой задачи: {result}");
-            Console.WriteLine();
+            
         }
         public void SolveTask2()
         {
@@ -20,7 +20,7 @@ namespace Homework2
                 "четверти принадлежит точка с координатами(X, Y).\n");
             int a = GetNumberFromUser("Введите число X:");
             int b = GetNumberFromUser("Введите число Y:");
-            string result = DefinitionQuarter(a, b);
+            string result = DetermineQuarter(a, b);
             Console.WriteLine($"Результат второй задачи: {result}");
         }
         public void SolveTask3()
@@ -30,7 +30,7 @@ namespace Homework2
             int a = GetNumberFromUser("Введите число A:");
             int b = GetNumberFromUser("Введите число B:");
             int c = GetNumberFromUser("Введите число C:");
-            string result = SortNumber(a, b, c);
+            string result = SortVariables(a, b, c);
             Console.WriteLine($"Результат третьей задачи: {result}");
         }
         public void SolveTask4()
@@ -41,7 +41,7 @@ namespace Homework2
             int a = GetNumberFromUser("Введите число A:");
             int b = GetNumberFromUser("Введите число B:");
             int c = GetNumberFromUser("Введите число C:");
-            string result = SearchRoot(a, b, c);
+            string result = GetRootsOfEquation(a, b, c);
             Console.WriteLine($"Результат четвертой задачи: {result}");
         }
         public void SolveTask5()
@@ -50,7 +50,7 @@ namespace Homework2
                 "консоль прописную запись этого числа. Например при вводе “25” в консоль " +
                 "будет выведено “двадцать пять”.\n");
             int a = GetNumberFromUser("Введите двузначное число:");
-            string result = DisplayNumberLetter(a);
+            string result = DisplayNumberInLetters(a);
             Console.WriteLine($"Результат пятой задачи: {result}");
         }
         public int GetNumberFromUser(string message)
@@ -78,7 +78,7 @@ namespace Homework2
                 return result;
             }
         }
-        public string DefinitionQuarter(int a, int b)
+        public string DetermineQuarter(int a, int b)
         {
             string result;
             if (a == 0 && b == 0)
@@ -107,7 +107,7 @@ namespace Homework2
             }
             return result;
         }
-        public string SortNumber(int a, int b, int c)
+        public string SortVariables(int a, int b, int c)
         {
             string result;
             if (a > b || a > c)
@@ -156,21 +156,21 @@ namespace Homework2
             }
             
         }
-        public string SearchRoot(int a, int b, int c)
+        public string GetRootsOfEquation(int a, int b, int c)
         {
             string result;
-            double discrimenant = Math.Pow(b, 2) - 4 * a * c;
-            if (discrimenant > 0)
+            double discriminant = Math.Pow(b, 2) - 4 * a * c;
+            if (discriminant > 0)
             {
-                double x1 = (-b + Math.Sqrt(discrimenant)) / (2 * a);
-                double x2 = (-b - Math.Sqrt(discrimenant)) / (2 * a);
-                result = $"Дискриминант равен {discrimenant}, поэтому уравнение имеет два корня, х1 = {x1}, х2 = {x2}";
+                double x1 = (-b + Math.Sqrt(discriminant)) / (2 * a);
+                double x2 = (-b - Math.Sqrt(discriminant)) / (2 * a);
+                result = $"Дискриминант равен {discriminant}, поэтому уравнение имеет два корня, х1 = {x1}, х2 = {x2}";
                 return result;
             }
-            else if (discrimenant == 0)
+            else if (discriminant == 0)
             {
-                double x1 = (-b + Math.Sqrt(discrimenant)) / (2 * a);
-                result = $"Дискриминант равен {discrimenant}, поэтому уравнение имеет один корень, х1 = {x1}";
+                double x1 = (-b + Math.Sqrt(discriminant)) / (2 * a);
+                result = $"Дискриминант равен {discriminant}, поэтому уравнение имеет один корень, х1 = {x1}";
                 return result;
             }
             else
@@ -179,7 +179,7 @@ namespace Homework2
                 return result;
             }
         }
-        public string DisplayNumberLetter(int a)
+        public string DisplayNumberInLetters(int a)
         {
             int result = a % 10;
             int result2 = a / 10;
@@ -234,7 +234,6 @@ namespace Homework2
                 };
                 return answer;
             }
-            return answer;
             
         }
     }

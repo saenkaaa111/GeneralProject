@@ -7,37 +7,37 @@ namespace Homework4
         public void SolveTask1()
         {
             Console.WriteLine("Задание: Найти минимальный элемент массива\n");
-            int result = MinNumberArray();
+            int result = GetMinNumberOfArray();
             Console.WriteLine($"Результат первой задачи: {result}");
         }
         public void SolveTask2()
         {
             Console.WriteLine("Задание: Найти максимальный элемент массива\n");
-            int result = MaxNumberArray();
+            int result = GetMaxNumberOfArray();
             Console.WriteLine($"Результат второй задачи: {result}");
         } 
         public void SolveTask3()
         {
             Console.WriteLine("Задание: Найти индекс минимального элемента массива\n");
-            int result = MinIndexNumberArray();
+            int result = GetIndexOfMinNumberOfArray();
             Console.WriteLine($"Результат третьей задачи: {result}");
         }
         public void SolveTask4()
         {
             Console.WriteLine("Задание: Найти индекс максимального элемента массива\n");
-            int result = MaxIndexNumberArray();
+            int result = GetIndexOfMaxNumberOfArray();
             Console.WriteLine($"Результат четвертой задачи: {result}");
         }
         public void SolveTask5()
         {
             Console.WriteLine("Задание: Посчитать сумму элементов массива с нечетными индексами\n");
-            int result = SumNumberOddIndex();
+            int result = GetSumNumberOddIndex();
             Console.WriteLine($"Результат пятой задачи: {result}");
         }
         public void SolveTask6()
         {
             Console.WriteLine("Задание: Сделать реверс массива (массив в обратном направлении)\n");
-            int[] result = ReversArray();
+            int[] result = GetReversArray();
             Console.WriteLine($"Результат шестой задачи: ");
             foreach (var item in result)
             {
@@ -47,7 +47,7 @@ namespace Homework4
         public void SolveTask7()
         {
             Console.WriteLine("Задание: Посчитать количество нечетных элементов массива\n");
-            int result = SumOddNumber();
+            int result = GetSumOddNumber();
             Console.WriteLine($"Результат седьмой задачи: {result}");
         }
         public void SolveTask8()
@@ -102,7 +102,7 @@ namespace Homework4
             Console.WriteLine("\n");
             return array;
         }
-        public int MinNumberArray()
+        public int GetMinNumberOfArray()
         {
             int [] a = FillingArray(GetNumberFromUser("Введите длину массива:"));
             int b = a[0];
@@ -119,7 +119,7 @@ namespace Homework4
             }
             return b;
         }
-        public int MaxNumberArray()
+        public int GetMaxNumberOfArray()
         {
             int [] a = FillingArray(GetNumberFromUser("Введите длину массива:"));
             int b = a[0];
@@ -136,7 +136,7 @@ namespace Homework4
             }
             return b;
         }
-        public int MinIndexNumberArray()
+        public int GetIndexOfMinNumberOfArray()
         {
             int[] a = FillingArray(GetNumberFromUser("Введите длину массива:"));
             int b = a[0];
@@ -155,7 +155,7 @@ namespace Homework4
             }
             return index;
         }
-        public int MaxIndexNumberArray()
+        public int GetIndexOfMaxNumberOfArray()
         {
             int[] a = FillingArray(GetNumberFromUser("Введите длину массива:"));
             int b = a[0];
@@ -174,7 +174,7 @@ namespace Homework4
             }
             return index;
         }
-        public int SumNumberOddIndex()
+        public int GetSumNumberOddIndex()
         {
             int[] a = FillingArray(GetNumberFromUser("Введите длину массива:"));
             int sum = 0;
@@ -184,19 +184,19 @@ namespace Homework4
             }
             return sum;
         }
-        public int[] ReversArray()
+        public int[] GetReversArray()
         {
             int[] a = FillingArray(GetNumberFromUser("Введите длину массива:"));
-            int peremen = a[a.Length - 1];
+            int variable = a[a.Length - 1];
             for (int i = 0; i < (a.Length / 2); i++)
             {
-                peremen = a[i];
+                variable = a[i];
                 a[i] = a[a.Length - 1 - i];
-                a[a.Length - 1 - i] = peremen;
+                a[a.Length - 1 - i] = variable;
             }
             return a;
         }
-        public int SumOddNumber()
+        public int GetSumOddNumber()
         {
             int[] a = FillingArray(GetNumberFromUser("Введите длину массива:")); 
             int sum = 0;
@@ -236,7 +236,7 @@ namespace Homework4
         {
             int[] a = FillingArray(GetNumberFromUser("Введите длину массива:"));
             int min;
-            int peremen;
+            int variable;
             for (int i = 0; i < a.Length-1; i++)
             {
                 min = i;
@@ -247,16 +247,16 @@ namespace Homework4
                         min = j;
                     }
                 }
-                peremen = a[min];
+                variable = a[min];
                 a[min] = a[i];
-                a[i] = peremen;
+                a[i] = variable;
             }
             return a;
         }
         public int[] SortInsert()
         {
             int[] a = FillingArray(GetNumberFromUser("Введите длину массива:"));
-            int peremen;
+            int variable;
             for (int i = 0; i < a.Length; i++)
             {
                 for (int j = 0; j < a.Length; j++)
@@ -267,9 +267,9 @@ namespace Homework4
                     }
                     while (a[j] < a[j + 1])
                     {
-                        peremen = a[j];
+                        variable = a[j];
                         a[j] = a[j + 1];
-                        a[j + 1] = peremen;
+                        a[j + 1] = variable;
                     }
                  }
             }

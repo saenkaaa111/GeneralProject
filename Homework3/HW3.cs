@@ -10,7 +10,7 @@ namespace Homework3
                 "число A в степень B.\n");
             int a = GetNumberFromUser("Введите число A:");
             int b = GetNumberFromUser("Введите число B:");
-            int result = Elevate(a, b);
+            int result = RaiseNumberToPower(a, b);
             Console.WriteLine($"Результат первой задачи: {result}");
         }
         public void SolveTask2()
@@ -18,7 +18,7 @@ namespace Homework3
             Console.WriteLine("Задание: Пользователь вводит 1 число (A). Вывести все числа" +
                 " от 1 до 1000, которые делятся на A.\n");
             int a = GetNumberFromUser("Введите число A:");
-            string result = DivisionByNumber(a);
+            string result = GetNumbersThatDivisibleByNumberFromUser(a);
             Console.WriteLine($"Результат второй задачи: {result}");
         }
         public void SolveTask3()
@@ -26,7 +26,7 @@ namespace Homework3
             Console.WriteLine("Задание: Пользователь вводит 1 число (A). Найдите количество " +
                 "положительных целых чисел, квадрат которых меньше A.\n");
             int a = GetNumberFromUser("Введите число A:");
-            int result = SearchNumbers(a);
+            int result = FindNumberPositiveIntegersWhoseSquareLessThanNumberFromUser(a);
             Console.WriteLine($"Результат третьей задачи: {result}");
         }
         public void SolveTask4()
@@ -34,7 +34,7 @@ namespace Homework3
             Console.WriteLine("Задание: Пользователь вводит 1 число (A). Вывести наибольший делитель " +
                 "(кроме самого A) числа A.\n");
             int a = GetNumberFromUser("Введите число A:");
-            int result = DevisorSearch(a);
+            int result = GetGreatestDivisor(a);
             Console.WriteLine($"Результат четвертой задачи: {result}");
         }
         public void SolveTask5()
@@ -44,7 +44,7 @@ namespace Homework3
                 "при вводе B может оказаться меньше A).\n");
             int a = GetNumberFromUser("Введите число A:");
             int b = GetNumberFromUser("Введите число B:");
-            int result = DevisorBySeven(a, b);
+            int result = GetSumNumbersWhichDivisibleBySeven(a, b);
             Console.WriteLine($"Результат пятой задачи: {result}");
         }
         public void SolveTask6()
@@ -62,7 +62,7 @@ namespace Homework3
                 "используя алгоритм Евклида.\n");
             int a = GetNumberFromUser("Введите число A:");
             int b = GetNumberFromUser("Введите число B:"); 
-            int result = EuclideanAlgorithm(a, b);
+            int result = GetGreatestCommonDivisorUsingEuclidAlgorithm(a, b);
             Console.WriteLine($"Результат седьмой задачи: {result}");
         }
         public void SolveTask8()
@@ -70,14 +70,14 @@ namespace Homework3
             Console.WriteLine("Пользователь вводит целое положительное число, которое является " +
                 "кубом целого числа N. Найдите число N методом половинного деления.\n");
             int a = GetNumberFromUser("Введите число:");
-            int result = HalfDivisionMethod(a);
+            int result = GetNumberUsingHalfDivisionMethod(a);
             Console.WriteLine($"Результат восьмой задачи: {result}");
         }
         public void SolveTask9()
         {
             Console.WriteLine("Пользователь вводит 1 число. Найти количество нечетных цифр этого числа.\n");
             int a = GetNumberFromUser("Введите число:");
-            int result = SearchOddNumbers(a);
+            int result = GetOddNumbers(a);
             Console.WriteLine($"Результат девятой задачи: {result}");
         }
         public void SolveTask10()
@@ -86,7 +86,7 @@ namespace Homework3
                 "отображением последовательности цифр заданного числа, например, задано число 123, " +
                 "вывести 321.\n");
             int a = GetNumberFromUser("Введите число:");
-            string result = Mirror(a);
+            string result = GetNumberUsingMirror(a);
             Console.WriteLine($"Результат десятой задачи: {result}");
         }
         public void SolveTask11()
@@ -114,7 +114,7 @@ namespace Homework3
             int number = Convert.ToInt32(Console.ReadLine());
             return number;
         }
-        public int Elevate(int a, int b)
+        public int RaiseNumberToPower(int a, int b)
         {
             int result = 1;
             for (int i = 1; i <= b; i++)
@@ -123,7 +123,7 @@ namespace Homework3
             }
             return result;
         }   
-        public string DivisionByNumber(int a)
+        public string GetNumbersThatDivisibleByNumberFromUser(int a)
         {
             string result ="";
             for (int i = 1; i < 1000; i++)
@@ -135,19 +135,19 @@ namespace Homework3
             }
             return result;
         }
-        public int SearchNumbers(int a)
+        public int FindNumberPositiveIntegersWhoseSquareLessThanNumberFromUser(int a)
         {
-            int quantity = 0;
+            int count = 0;
             for (int i = 1; i < a; i++)
             {
                 if (Math.Pow(i, 2) < a)
                 {
-                    quantity++;
+                    count++;
                 }
             }
-            return quantity;
+            return count;
         }
-        public int DevisorSearch(int a)
+        public int GetGreatestDivisor(int a)
         {
             int result = 0;
             for (int i = a - 1; i > 0; i--)
@@ -160,7 +160,7 @@ namespace Homework3
             }
             return result;
         }
-        public int DevisorBySeven(int a, int b)
+        public int GetSumNumbersWhichDivisibleBySeven(int a, int b)
         {
             int sum = 0;
             if (a < b)
@@ -201,9 +201,9 @@ namespace Homework3
             } while (counter != a + 1);
             return result;
         }
-        public int EuclideanAlgorithm(int a, int b)
+        public int GetGreatestCommonDivisorUsingEuclidAlgorithm(int a, int b)
         {
-            int account = 0;
+            int count = 0;
             int peremen;
             if (a < b)
             {
@@ -214,7 +214,7 @@ namespace Homework3
             while (a > b)
             {
                 a -= b;
-                account++;
+                count++;
                 if (b > a)
                 {
                     peremen = a;
@@ -224,7 +224,7 @@ namespace Homework3
             }
             return a;
         }
-        public int HalfDivisionMethod(int a)
+        public int GetNumberUsingHalfDivisionMethod(int a)
         {
             int x = a;
             int i = 0;
@@ -250,7 +250,7 @@ namespace Homework3
             }
             return center;
         }
-        public int SearchOddNumbers(int a)
+        public int GetOddNumbers(int a)
         {
             int numberA = Math.Abs(a);
             int i = 0;
@@ -266,7 +266,7 @@ namespace Homework3
             }
             return i;
         }
-        public string Mirror(int a)
+        public string GetNumberUsingMirror(int a)
         {
             int numberA = Math.Abs(a);
             int b = numberA;

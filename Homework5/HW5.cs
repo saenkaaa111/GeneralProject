@@ -7,32 +7,32 @@ namespace Homework5
         public void SolveTask1()
         {
             Console.WriteLine("Задание: Найти минимальный элемент массива\n");
-            int result = MinNumberArray();
+            int result = GetMinNumberOfArray();
             Console.WriteLine($"Результат первой задачи: {result}");
         }
         public void SolveTask2()
         {
             Console.WriteLine("Задание: Найти максимальный элемент массива\n");
-            int result = MaxNumberArray();
+            int result = GetMaxNumberOfArray();
             Console.WriteLine($"Результат второй задачи: {result}");
         }
         public void SolveTask3()
         {
             Console.WriteLine("Задание: Найти индекс минимального элемента массива\n");
-            string result = MinNumberIndexArray();
+            string result = GetIndexOfMinNumberOfArray();
             Console.WriteLine($"Результат третьей задачи: {result}");
         }
         public void SolveTask4()
         {
             Console.WriteLine("Задание: Найти индекс максимального элемента массива\n");
-            string result = MaxNumberIndexArray();
+            string result = GetIndexOfMaxNumberOfArray();
             Console.WriteLine($"Результат четвертой задачи: {result}");
         }
         public void SolveTask5()
         {
             Console.WriteLine("Задание: Найти количество элементов массива, которые больше " +
                 "всех своих соседей одновременно\n");
-            int result = FindNumberElementsThatGreaterThanNeighbors();
+            int result = GetCountOfElementsThatGreaterThanNeighbors();
             Console.WriteLine($"Результат пятой задачи: {result}");
         }
         public void SolveTask6()
@@ -73,7 +73,7 @@ namespace Homework5
             return array;
         }
 
-        public int MinNumberArray()
+        public int GetMinNumberOfArray()
         {
             int[,] a = Filling2Array(GetNumberFromUser("Введите длину массива:"));
             int minNumber = a[0, 0];
@@ -89,7 +89,7 @@ namespace Homework5
             }
            return minNumber;
         }
-        public int MaxNumberArray()
+        public int GetMaxNumberOfArray()
         {
             int[,] a = Filling2Array(GetNumberFromUser("Введите длину массива:"));
             int maxNumber = a[0, 0];
@@ -105,7 +105,7 @@ namespace Homework5
             }
            return maxNumber;
         }
-        public string MinNumberIndexArray()
+        public string GetIndexOfMinNumberOfArray()
         {
             int[,] a = Filling2Array(GetNumberFromUser("Введите длину массива:"));
             int minNumber = a[0, 0];
@@ -123,7 +123,7 @@ namespace Homework5
             }
             return index;
         }
-        public string MaxNumberIndexArray()
+        public string GetIndexOfMaxNumberOfArray()
         {
             int[,] a = Filling2Array(GetNumberFromUser("Введите длину массива:"));
             int maxNumber = a[0, 0];
@@ -141,7 +141,7 @@ namespace Homework5
             }
             return index;
         }
-        public int FindNumberElementsThatGreaterThanNeighbors()
+        public int GetCountOfElementsThatGreaterThanNeighbors()
         {
             int[,] a = Filling2Array(GetNumberFromUser("Введите длину массива:"));
             int count = 0;
