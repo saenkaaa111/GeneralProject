@@ -26,7 +26,7 @@ namespace Homework3
             Console.WriteLine("Задание: Пользователь вводит 1 число (A). Найдите количество " +
                 "положительных целых чисел, квадрат которых меньше A.\n");
             int a = GetNumberFromUser("Введите число A:");
-            int result = FindNumberPositiveIntegersWhoseSquareLessThanNumberFromUser(a);
+            int result = GetCountOfNumbersWithSquareLessThanNumberFromUser(a);
             Console.WriteLine($"Результат третьей задачи: {result}");
         }
         public void SolveTask4()
@@ -53,7 +53,7 @@ namespace Homework3
                 "В ряду фибоначчи каждое следующее число является суммой двух предыдущих. Первое " +
                 "и второе считаются равными 1.\n");
             int a = GetNumberFromUser("Введите число N:");
-            int result = FibonacciRange(a);
+            int result = GetNumberOfFibonacciRange(a);
             Console.WriteLine($"Результат шестой задачи: {result}");
         }
         public void SolveTask7()
@@ -86,7 +86,7 @@ namespace Homework3
                 "отображением последовательности цифр заданного числа, например, задано число 123, " +
                 "вывести 321.\n");
             int a = GetNumberFromUser("Введите число:");
-            string result = GetNumberUsingMirror(a);
+            string result = GetNumberMirrored(a);
             Console.WriteLine($"Результат десятой задачи: {result}");
         }
         public void SolveTask11()
@@ -94,7 +94,7 @@ namespace Homework3
             Console.WriteLine("Пользователь вводит целое положительное  число (N). Выведите " +
                 "числа в диапазоне от 1 до N, сумма четных цифр которых больше суммы нечетных\n");
             int a = GetNumberFromUser("Введите число:");
-            string result = OutputRange(a);
+            string result = GetNumbersWhereSumOfEvenDigitsIsGreaterThanOdd(a);
             Console.WriteLine($"Результат одиннадцатой задачи: {result}");
         }
         public void SolveTask12()
@@ -135,7 +135,7 @@ namespace Homework3
             }
             return result;
         }
-        public int FindNumberPositiveIntegersWhoseSquareLessThanNumberFromUser(int a)
+        public int GetCountOfNumbersWithSquareLessThanNumberFromUser(int a)
         {
             int count = 0;
             for (int i = 1; i < a; i++)
@@ -165,7 +165,9 @@ namespace Homework3
             int sum = 0;
             if (a < b)
             {
-                for (int i = a; i < b; i++)
+                Swap(ref a, ref b);
+            }
+            for (int i = b; i < a; i++)
                 {
                     if (i % 7 == 0)
                     {
@@ -173,20 +175,16 @@ namespace Homework3
                     }
                 }
                 return sum;
-            }
-            else
-            {
-                for (int i = b; i < a; i++)
-                {
-                    if (i % 7 == 0)
-                    {
-                        sum+=i;
-                    }
-                }
-                return sum;
-            }
+            
         }
-        public int FibonacciRange(int a)
+        public void Swap(ref int a, ref int b)
+        {
+            int variable = a;
+            a = b;
+            b = variable;
+           
+        }
+        public int GetNumberOfFibonacciRange(int a)
         {
             int numberNMinOne = 1;
             int numberNMinTwo = 1;
@@ -204,12 +202,9 @@ namespace Homework3
         public int GetGreatestCommonDivisorUsingEuclidAlgorithm(int a, int b)
         {
             int count = 0;
-            int peremen;
             if (a < b)
             {
-                peremen = a;
-                a = b;
-                b = peremen;
+                Swap(ref a, ref b);
             }
             while (a > b)
             {
@@ -217,9 +212,7 @@ namespace Homework3
                 count++;
                 if (b > a)
                 {
-                    peremen = a;
-                    a = b;
-                    b = peremen;
+                    Swap(ref a, ref b);
                 }
             }
             return a;
@@ -266,7 +259,7 @@ namespace Homework3
             }
             return i;
         }
-        public string GetNumberUsingMirror(int a)
+        public string GetNumberMirrored(int a)
         {
             int numberA = Math.Abs(a);
             int b = numberA;
@@ -280,7 +273,7 @@ namespace Homework3
             }
             return mirror;
         }
-        public string OutputRange(int a)
+        public string GetNumbersWhereSumOfEvenDigitsIsGreaterThanOdd (int a)
         {
             string result = "";
             for (int i = 1; i < a + 1; i++)

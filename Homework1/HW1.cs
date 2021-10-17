@@ -23,8 +23,7 @@ namespace Homework1
                 "Поменяйте содержимое переменных A и B местами.\n");
             string a = GetStringFromUser("Введите строковое значение A:");
             string b = GetStringFromUser("Введите строковое значение B:");
-            string result = SwapContentsOfVariable(a, b);
-            Console.WriteLine($"Результат второй задачи: {result}");
+            SwapContentsOfVariable(ref a, ref b);
         }
         public void SolveTask3()
         {
@@ -32,7 +31,7 @@ namespace Homework1
                 "Выведите в консоль результат деления A на B и остаток от деления.\n");
             int a = GetNumberFromUser("Введите число A:");
             int b = GetNumberFromUser("Введите число B:");
-            double result1 = GetDivision(a, b);
+            double result1 = GetResultOfDivision(a, b);
             double result2 = GetRemainderOfDivision(a, b);
             Console.WriteLine($"Результат третьей задачи: {result1} и {result2}");
         }
@@ -76,17 +75,18 @@ namespace Homework1
             string stringVariable = Console.ReadLine();
             return stringVariable;
         }
-        public string SwapContentsOfVariable(string a, string b)
+        public void SwapContentsOfVariable(ref string a, ref string b)
         {
             string variableReplace = a;
             a = b;
             b = variableReplace;
             string result = a + " " + b;
-            return result;
+            Console.WriteLine(result);
+            
         }
-        public double GetDivision(int a, int b)
+        public int GetResultOfDivision(int a, int b)
         {
-            double result = (double)a / b;
+            int result = a / b;
             return result;
         }
         public double GetRemainderOfDivision(int a, int b)

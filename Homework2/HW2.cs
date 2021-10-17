@@ -20,8 +20,18 @@ namespace Homework2
                 "четверти принадлежит точка с координатами(X, Y).\n");
             int a = GetNumberFromUser("Введите число X:");
             int b = GetNumberFromUser("Введите число Y:");
-            string result = DetermineQuarter(a, b);
-            Console.WriteLine($"Результат второй задачи: {result}");
+            int result = DetermineQuarter(a, b);
+            string answer = result switch
+            {
+                0 => "Точка на оси координат",
+                1 => "Первая четверть",
+                2 => "Вторая четверть",
+                3 => "Третья четверть",
+                4 => "Четвертая четверть",
+                _ => "",
+            };
+
+            Console.WriteLine($"Результат второй задачи: {answer}");
         }
         public void SolveTask3()
         {
@@ -41,8 +51,24 @@ namespace Homework2
             int a = GetNumberFromUser("Введите число A:");
             int b = GetNumberFromUser("Введите число B:");
             int c = GetNumberFromUser("Введите число C:");
-            string result = GetRootsOfEquation(a, b, c);
-            Console.WriteLine($"Результат четвертой задачи: {result}");
+            double[] result = GetRootsOfEquation(a, b, c);
+            Console.Write($"Результат четвертой задачи: ");
+            if (result.Length==0)
+            {
+                Console.WriteLine("Нет корней");
+            }
+            else if (result.Length == 1)
+            {
+                Console.Write ("Уравнение имеет один корень ");
+            }
+            else
+            {
+                Console.Write("Уравнение имеет два корня  ");
+            }
+            foreach (var item in result)
+            {
+                Console.Write($"{item} " ) ;
+            }
         }
         public void SolveTask5()
         {
@@ -78,32 +104,28 @@ namespace Homework2
                 return result;
             }
         }
-        public string DetermineQuarter(int a, int b)
+        public int DetermineQuarter(int a, int b)
         {
-            string result;
-            if (a == 0 && b == 0)
+            int result;
+            if (a > 0 && b > 0)
             {
-                result = "Центр координат!";
-            }
-            else if (a > 0 && b > 0)
-            {
-                result = "1 четверть";
+                result = 1;
             }
             else if (a < 0 && b < 0)
             {
-                result = "3 четверть";
+                result = 3;
             }
             else if (a > 0 && b < 0)
             {
-                result = "4 четверть";
+                result = 4;
             }
             else if (a < 0 && b > 0)
             {
-                result = "2 четверть";
+                result = 2;
             }
             else
             {
-                result = "Точка на оси координат";
+                result = 0;
             }
             return result;
         }
@@ -156,26 +178,24 @@ namespace Homework2
             }
             
         }
-        public string GetRootsOfEquation(int a, int b, int c)
+        public double[] GetRootsOfEquation(int a, int b, int c)
         {
-            string result;
-            double discriminant = Math.Pow(b, 2) - 4 * a * c;
+
+            double[] result;
+                double discriminant = Math.Pow(b, 2) - 4 * a * c;
             if (discriminant > 0)
             {
-                double x1 = (-b + Math.Sqrt(discriminant)) / (2 * a);
-                double x2 = (-b - Math.Sqrt(discriminant)) / (2 * a);
-                result = $"Дискриминант равен {discriminant}, поэтому уравнение имеет два корня, х1 = {x1}, х2 = {x2}";
+                result = new double[] { (-b + Math.Sqrt(discriminant)) / (2 * a) , (-b - Math.Sqrt(discriminant)) / (2 * a) };
                 return result;
             }
             else if (discriminant == 0)
             {
-                double x1 = (-b + Math.Sqrt(discriminant)) / (2 * a);
-                result = $"Дискриминант равен {discriminant}, поэтому уравнение имеет один корень, х1 = {x1}";
+                result = new double[] { (-b + Math.Sqrt(discriminant)) / (2 * a) };
                 return result;
             }
             else
             {
-                result = "Дискриминант меньше 0, поэтому уравнение не имеет корней";
+                result = new double[0];
                 return result;
             }
         }

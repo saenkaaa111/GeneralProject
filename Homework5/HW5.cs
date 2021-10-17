@@ -7,44 +7,104 @@ namespace Homework5
         public void SolveTask1()
         {
             Console.WriteLine("Задание: Найти минимальный элемент массива\n");
-            int result = GetMinNumberOfArray();
+            int[,] array = Fill2ArrayWithNumber(GetNumberFromUser("Введите длину массива:"));
+            Console.WriteLine("Массив: ");
+            for (int i = 0; i < array.GetLength(0); i++)
+            {
+                for (int j = 0; j < array.GetLength(0); j++)
+                {
+                    Console.Write(array[i, j] + "\t");
+                }
+                Console.WriteLine("\n");
+            }
+            int result = GetMinNumberOfArray(array);
             Console.WriteLine($"Результат первой задачи: {result}");
         }
         public void SolveTask2()
         {
             Console.WriteLine("Задание: Найти максимальный элемент массива\n");
-            int result = GetMaxNumberOfArray();
+            int[,] array = Fill2ArrayWithNumber(GetNumberFromUser("Введите длину массива:"));
+            Console.WriteLine("Массив: ");
+            for (int i = 0; i < array.GetLength(0); i++)
+            {
+                for (int j = 0; j < array.GetLength(0); j++)
+                {
+                    Console.Write(array[i, j] + "\t");
+                }
+                Console.WriteLine("\n");
+            }
+            int result = GetMaxNumberOfArray(array);
             Console.WriteLine($"Результат второй задачи: {result}");
         }
         public void SolveTask3()
         {
             Console.WriteLine("Задание: Найти индекс минимального элемента массива\n");
-            string result = GetIndexOfMinNumberOfArray();
+            int[,] array = Fill2ArrayWithNumber(GetNumberFromUser("Введите длину массива:"));
+            Console.WriteLine("Массив: ");
+            for (int i = 0; i < array.GetLength(0); i++)
+            {
+                for (int j = 0; j < array.GetLength(0); j++)
+                {
+                    Console.Write(array[i, j] + "\t");
+                }
+                Console.WriteLine("\n");
+            }
+            string result = GetIndexOfMinNumberOfArray(array);
             Console.WriteLine($"Результат третьей задачи: {result}");
         }
         public void SolveTask4()
         {
             Console.WriteLine("Задание: Найти индекс максимального элемента массива\n");
-            string result = GetIndexOfMaxNumberOfArray();
+            int[,] array = Fill2ArrayWithNumber(GetNumberFromUser("Введите длину массива:"));
+            Console.WriteLine("Массив: ");
+            for (int i = 0; i < array.GetLength(0); i++)
+            {
+                for (int j = 0; j < array.GetLength(0); j++)
+                {
+                    Console.Write(array[i, j] + "\t");
+                }
+                Console.WriteLine("\n");
+            }
+            string result = GetIndexOfMaxNumberOfArray(array);
             Console.WriteLine($"Результат четвертой задачи: {result}");
         }
         public void SolveTask5()
         {
             Console.WriteLine("Задание: Найти количество элементов массива, которые больше " +
                 "всех своих соседей одновременно\n");
-            int result = GetCountOfElementsThatGreaterThanNeighbors();
+            int[,] array = Fill2ArrayWithNumber(GetNumberFromUser("Введите длину массива:"));
+            Console.WriteLine("Массив: ");
+            for (int i = 0; i < array.GetLength(0); i++)
+            {
+                for (int j = 0; j < array.GetLength(0); j++)
+                {
+                    Console.Write(array[i, j] + "\t");
+                }
+                Console.WriteLine("\n");
+            }
+            int result = GetCountOfElementsThatGreaterThanNeighbors(array);
             Console.WriteLine($"Результат пятой задачи: {result}");
         }
         public void SolveTask6()
         {
             Console.WriteLine("Задание: Отразите массив относительно его главной диагонали\n");
-            int[,] result = FlipArrayRelativeItsMainDiagonal();
-            Console.WriteLine($"Результат шестой задачи: ");
-            for (int i = 0; i < result.GetLength(0); i++)
+            int[,] array = Fill2ArrayWithNumber(GetNumberFromUser("Введите длину массива:"));
+            Console.WriteLine("Массив: ");
+            for (int i = 0; i < array.GetLength(0); i++)
             {
-                for (int j = 0; j < result.GetLength(0); j++)
+                for (int j = 0; j < array.GetLength(0); j++)
                 {
-                    Console.Write(result[i, j] + "\t");
+                    Console.Write(array[i, j] + "\t");
+                }
+                Console.WriteLine("\n");
+            }
+            FlipArrayRelativeItsMainDiagonal(ref array);
+            Console.WriteLine($"Результат шестой задачи: ");
+            for (int i = 0; i < array.GetLength(0); i++)
+            {
+                for (int j = 0; j < array.GetLength(0); j++)
+                {
+                    Console.Write(array[i, j] + "\t");
                 }
                 Console.WriteLine("\n");
             }
@@ -56,7 +116,7 @@ namespace Homework5
             return number;
         }
 
-        public int[,] Filling2Array(int a)
+        public int[,] Fill2ArrayWithNumber(int a)
         {
             int[,] array = new int[a,a];
             Random rnd = new Random();
@@ -66,16 +126,13 @@ namespace Homework5
                 for (int j = 0; j < a; j++)
                 {
                     array[i,j] = rnd.Next(-100, 100);
-                    Console.Write(array[i,j] + "\t");
                 }
-                Console.WriteLine("\n");
             }
             return array;
         }
 
-        public int GetMinNumberOfArray()
+        public int GetMinNumberOfArray(int[,] a)
         {
-            int[,] a = Filling2Array(GetNumberFromUser("Введите длину массива:"));
             int minNumber = a[0, 0];
             for (int i = 0; i < a.GetLength(0); i++)
             {
@@ -89,9 +146,8 @@ namespace Homework5
             }
            return minNumber;
         }
-        public int GetMaxNumberOfArray()
+        public int GetMaxNumberOfArray(int[,] a)
         {
-            int[,] a = Filling2Array(GetNumberFromUser("Введите длину массива:"));
             int maxNumber = a[0, 0];
             for (int i = 0; i < a.GetLength(0); i++)
             {
@@ -105,9 +161,8 @@ namespace Homework5
             }
            return maxNumber;
         }
-        public string GetIndexOfMinNumberOfArray()
+        public string GetIndexOfMinNumberOfArray(int[,] a)
         {
-            int[,] a = Filling2Array(GetNumberFromUser("Введите длину массива:"));
             int minNumber = a[0, 0];
             string index = "";
             for (int i = 0; i < a.GetLength(0); i++)
@@ -123,9 +178,8 @@ namespace Homework5
             }
             return index;
         }
-        public string GetIndexOfMaxNumberOfArray()
+        public string GetIndexOfMaxNumberOfArray(int[,] a)
         {
-            int[,] a = Filling2Array(GetNumberFromUser("Введите длину массива:"));
             int maxNumber = a[0, 0];
             string index = "";
             for (int i = 0; i < a.GetLength(0); i++)
@@ -141,9 +195,8 @@ namespace Homework5
             }
             return index;
         }
-        public int GetCountOfElementsThatGreaterThanNeighbors()
+        public int GetCountOfElementsThatGreaterThanNeighbors(int[,] a)
         {
-            int[,] a = Filling2Array(GetNumberFromUser("Введите длину массива:"));
             int count = 0;
             for (int i = 0; i < a.GetLength(0); i++)
             {
@@ -160,10 +213,9 @@ namespace Homework5
             }
             return count;
         }
-        public int[,] FlipArrayRelativeItsMainDiagonal()
+        public void FlipArrayRelativeItsMainDiagonal(ref int[,] a)
         {
-            int[,] a = Filling2Array(GetNumberFromUser("Введите длину массива:"));
-            int peremen;
+            int variable;
             int m = 1;
             for (int i = 0; i < a.GetLength(0); i++)
             {
@@ -173,14 +225,14 @@ namespace Homework5
                 }
                 for (int j = m; j < a.GetLength(0); j++)
                 {
-                    peremen = a[i, j];
+                    variable = a[i, j];
                     a[i, j] = a[j, i];
-                    a[j, i] = peremen;
+                    a[j, i] = variable;
                 }
                 m++;
 
             }
-            return a;
+            
         }
 
     }
