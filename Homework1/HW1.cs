@@ -24,6 +24,7 @@ namespace Homework1
             string a = GetStringFromUser("Введите строковое значение A:");
             string b = GetStringFromUser("Введите строковое значение B:");
             SwapContentsOfVariable(ref a, ref b);
+            Console.WriteLine($"Результат второй задачи: {a}, {b}");
         }
         public void SolveTask3()
         {
@@ -80,9 +81,7 @@ namespace Homework1
             string variableReplace = a;
             a = b;
             b = variableReplace;
-            string result = a + " " + b;
-            Console.WriteLine(result);
-            
+                        
         }
         public int GetResultOfDivision(int a, int b)
         {
