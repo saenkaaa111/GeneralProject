@@ -86,7 +86,7 @@ namespace Homework3
                 "отображением последовательности цифр заданного числа, например, задано число 123, " +
                 "вывести 321.\n");
             int a = GetNumberFromUser("Введите число:");
-            string result = GetNumberMirrored(a);
+            int result = GetNumberMirrored(a);
             Console.WriteLine($"Результат десятой задачи: {result}");
         }
         public void SolveTask11()
@@ -259,7 +259,7 @@ namespace Homework3
             }
             return i;
         }
-        public string GetNumberMirrored(int a)
+        public int GetNumberMirrored(int a)
         {
             int numberA = Math.Abs(a);
             int b = numberA;
@@ -271,7 +271,8 @@ namespace Homework3
                 mirror += b;
                 b = numberA;
             }
-            return mirror;
+            int result = Convert.ToInt32(mirror); 
+            return result;
         }
         public string GetNumbersWhereSumOfEvenDigitsIsGreaterThanOdd (int a)
         {
