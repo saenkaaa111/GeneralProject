@@ -263,15 +263,14 @@ namespace Homework3
         {
             int numberA = Math.Abs(a);
             int b = numberA;
-            string mirror = "";
+            int result = 0;
             while (numberA != 0)
             {
                 b %= 10;
                 numberA /= 10;
-                mirror += b;
+                result = result * 10 + b;
                 b = numberA;
             }
-            int result = Convert.ToInt32(mirror); 
             return result;
         }
         public string GetNumbersWhereSumOfEvenDigitsIsGreaterThanOdd (int a)

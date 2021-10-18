@@ -47,13 +47,13 @@ namespace GeneralProject
             //hw4.SolveTask8();
             //hw4.SolveTask9();
             //hw4.SolveTask10();
-            HW5 hw5 = new HW5();
+            //HW5 hw5 = new HW5();
             //hw5.SolveTask1();
             //hw5.SolveTask2();
             //hw5.SolveTask3();
             //hw5.SolveTask4();
             //hw5.SolveTask5();
-            hw5.SolveTask6();
+            //hw5.SolveTask6();
             
 
 
