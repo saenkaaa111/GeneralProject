@@ -133,78 +133,98 @@ namespace Homework5
 
         public int GetMinNumberOfArray(int[,] a)
         {
-            int minNumber = a[0, 0];
-            for (int i = 0; i < a.GetLength(0); i++)
+            if (a.Length > 0)
             {
-                for (int j = 0; j < a.GetLength(0); j++)
+                int minNumber = a[0, 0];
+                for (int i = 0; i < a.GetLength(0); i++)
                 {
-                    if (minNumber > a[i, j])
+                    for (int j = 0; j < a.GetLength(1); j++)
                     {
-                        minNumber = a[i, j];
+                        if (minNumber > a[i, j])
+                        {
+                            minNumber = a[i, j];
+                        }
                     }
                 }
+                return minNumber;
             }
-           return minNumber;
+            else { return 0; }
+
+
         }
         public int GetMaxNumberOfArray(int[,] a)
         {
-            int maxNumber = a[0, 0];
-            for (int i = 0; i < a.GetLength(0); i++)
+            if (a.Length > 0)
             {
-                for (int j = 0; j < a.GetLength(0); j++)
+                int maxNumber = a[0, 0];
+                for (int i = 0; i < a.GetLength(0); i++)
                 {
-                    if (maxNumber < a[i, j])
+                    for (int j = 0; j < a.GetLength(1); j++)
                     {
-                        maxNumber = a[i, j];
+                        if (maxNumber < a[i, j])
+                        {
+                            maxNumber = a[i, j];
+                        }
                     }
                 }
+                return maxNumber;
             }
-           return maxNumber;
+            else { return 0; }
         }
         public string GetIndexOfMinNumberOfArray(int[,] a)
         {
-            int minNumber = a[0, 0];
-            string index = "";
-            for (int i = 0; i < a.GetLength(0); i++)
+
+            if (a.Length > 0)
             {
-                for (int j = 0; j < a.GetLength(0); j++)
+                int minNumber = a[0, 0];
+                string index = $"0,0";
+                for (int i = 0; i < a.GetLength(0); i++)
                 {
-                    if (minNumber > a[i, j])
+                    for (int j = 0; j < a.GetLength(1); j++)
                     {
-                        minNumber = a[i, j];
-                        index = $"{i},{j}";
+                        if (minNumber > a[i, j])
+                        {
+                            minNumber = a[i, j];
+                            index = $"{i},{j}";
+                        }
                     }
                 }
+                return index;
             }
-            return index;
+            else { return ""; }
+
         }
         public string GetIndexOfMaxNumberOfArray(int[,] a)
         {
-            int maxNumber = a[0, 0];
-            string index = "";
-            for (int i = 0; i < a.GetLength(0); i++)
+            if (a.Length > 0)
             {
-                for (int j = 0; j < a.GetLength(0); j++)
+                int maxNumber = a[0, 0];
+                string index = $"0,0";
+                for (int i = 0; i < a.GetLength(0); i++)
                 {
-                    if (maxNumber < a[i, j])
+                    for (int j = 0; j < a.GetLength(1); j++)
                     {
-                        maxNumber = a[i, j];
-                        index = $"{i},{j}";
+                        if (maxNumber < a[i, j])
+                        {
+                            maxNumber = a[i, j];
+                            index = $"{i},{j}";
+                        }
                     }
                 }
+                return index;
             }
-            return index;
+            else { return ""; }
         }
         public int GetCountOfElementsThatGreaterThanNeighbors(int[,] a)
         {
             int count = 0;
             for (int i = 0; i < a.GetLength(0); i++)
             {
-                for (int j = 0; j < a.GetLength(0); j++)
+                for (int j = 0; j < a.GetLength(1); j++)
                 {
                     if ((i== a.GetLength(0)-1 || a[i,j]>a[i+1,j])&& 
                         (i == 0 || a[i, j] > a[i - 1, j]) &&
-                        (j == a.GetLength(0)-1 || a[i, j] > a[i, j+1]) &&
+                        (j == a.GetLength(1)-1 || a[i, j] > a[i, j+1]) &&
                         (j == 0 || a[i, j] > a[i, j-1]))
                     {
                         count++;
@@ -223,7 +243,7 @@ namespace Homework5
                 {
                     break;
                 }
-                for (int j = m; j < a.GetLength(0); j++)
+                for (int j = m; j < a.GetLength(1); j++)
                 {
                     variable = a[i, j];
                     a[i, j] = a[j, i];

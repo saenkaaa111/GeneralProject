@@ -2,7 +2,7 @@ using NUnit.Framework;
 
 namespace Homework4.Tests
 {
-    public class Tests
+    public class HW4Tests
     {
         private HW4 _hw4;
 
