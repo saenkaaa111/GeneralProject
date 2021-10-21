@@ -72,6 +72,25 @@ namespace Homework2.Tests
             //assert
             Assert.AreEqual(expected, actual);
         }
+        
+        
+        
+        [TestCase(16, -8, 1, new double[] { 0.25 })]
+        [TestCase(9, -6, 2, new double[] {})]
+        [TestCase(2, 5, -7, new double[] { 1, -3.5 })]
+        
+        public void GetRootsOfEquationTest(int a, int b, int c, double[] expected)
+        {
+            //arrange
+
+            //act
+            double[] actual = _hw2.GetRootsOfEquation(a, b, c);
+
+            //assert
+            Assert.AreEqual(expected, actual);
+        }
+
+
 
     }
 }
