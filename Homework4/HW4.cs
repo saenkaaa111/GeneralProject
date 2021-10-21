@@ -239,10 +239,9 @@ namespace Homework4
         }
         public void GetReversArray(ref int[] a)
         {
-            int variable = a[a.Length - 1];
             for (int i = 0; i < (a.Length / 2); i++)
             {
-                variable = a[i];
+                int variable = a[i];
                 a[i] = a[a.Length - 1 - i];
                 a[a.Length - 1 - i] = variable;
             }
