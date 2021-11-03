@@ -13,10 +13,13 @@ namespace Homework4.Tests
         }
 
 
-        [TestCase(new int[] { 2, 9, 3, 6, -4, 6, 8, -2, 5}, -4)]
-        [TestCase(new int[] { 0, 8, 4, 79}, 0)]
-        [TestCase(new int[] { 1589}, 1589)]
-        
+        [TestCase(new int[] { 2, 9, 3, 6, -4, 6, 8, -2, 5 }, -4)]
+        [TestCase(new int[] { 0, 8, 4, 79 }, 0)]
+        [TestCase(new int[] { 1589 }, 1589)]
+        [TestCase(new int[] { }, -1)]
+        [TestCase(new int[] { 5 }, 5)]
+
+
         public void GetMinNumberOfArrayTest(int[] a, int expected)
         {
             //arrange
@@ -32,7 +35,10 @@ namespace Homework4.Tests
         [TestCase(new int[] { 2, 9, 3, 6, -4, 6, 8, -2, 5}, 9)]
         [TestCase(new int[] { 0, 8, 4, 79}, 79)]
         [TestCase(new int[] { 1589}, 1589)]
-        
+        [TestCase(new int[] { }, -1)]
+        [TestCase(new int[] { 4 }, 4)]
+
+
         public void GetMaxNumberOfArrayTest(int[] a, int expected)
         {
             //arrange
@@ -47,6 +53,8 @@ namespace Homework4.Tests
         [TestCase(new int[] { 2, 9, 3, 6, -4, 6, 8, -2, 5 }, 4)]
         [TestCase(new int[] { 7, 0, 4, 79 }, 1)]
         [TestCase(new int[] { 1589 }, 0)]
+        [TestCase(new int[] { }, -1)]
+        [TestCase(new int[] { 0 }, 0)]
 
         public void GetIndexOfMinNumberOfArrayTest(int[] a, int expected)
         {
@@ -62,6 +70,8 @@ namespace Homework4.Tests
         [TestCase(new int[] { 2, 9, 3, 6, -4, 6, 8, -2, 5 }, 1)]
         [TestCase(new int[] { 7, 0, 4, 79 }, 3)]
         [TestCase(new int[] { 1589 }, 0)]
+        [TestCase(new int[] { }, -1)]
+        [TestCase(new int[] { 0 }, 0)]
 
         public void GetIndexOfMaxNumberOfArrayTest(int[] a, int expected)
         {
@@ -78,6 +88,8 @@ namespace Homework4.Tests
         [TestCase(new int[] { 2, 9, 3, 6, -4, 6, 8, -2, 5 }, 19)]
         [TestCase(new int[] { 7, 0, 4, 79 }, 79)]
         [TestCase(new int[] { 1589 }, 0)]
+        [TestCase(new int[] { }, 0)]
+        [TestCase(new int[] { 0 }, 0)]
 
         public void GetSumNumberOddIndexTest(int[] a, int expected)
         {
@@ -101,7 +113,7 @@ namespace Homework4.Tests
             //arrange
 
             //act
-            _hw4.GetReversArray(ref a);
+            _hw4.GetReversArray(a);
 
             //assert
             Assert.AreEqual(expected, a);
@@ -134,7 +146,7 @@ namespace Homework4.Tests
             //arrange
 
             //act
-            _hw4.SwapArray(ref array);
+            _hw4.SwapArray(array);
 
             //assert
             Assert.AreEqual(expected, array);

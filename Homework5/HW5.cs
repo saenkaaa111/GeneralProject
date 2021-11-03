@@ -49,7 +49,7 @@ namespace Homework5
                 }
                 Console.WriteLine("\n");
             }
-            string result = GetIndexOfMinNumberOfArray(array);
+            int[] result = GetIndexOfMinNumberOfArray(array);
             Console.WriteLine($"Результат третьей задачи: {result}");
         }
         public void SolveTask4()
@@ -65,7 +65,7 @@ namespace Homework5
                 }
                 Console.WriteLine("\n");
             }
-            string result = GetIndexOfMaxNumberOfArray(array);
+            int[] result = GetIndexOfMaxNumberOfArray(array);
             Console.WriteLine($"Результат четвертой задачи: {result}");
         }
         public void SolveTask5()
@@ -171,35 +171,35 @@ namespace Homework5
             }
             else { return 0; }
         }
-        public string GetIndexOfMinNumberOfArray(int[,] a)
+        public int[] GetIndexOfMinNumberOfArray(int[,] a)
         {
-
+            int[] index = new int[] {};
             if (a.Length > 0)
             {
-                int minNumber = a[0, 0];
-                string index = $"0,0";
+                int maxNumber = a[0, 0];
+
                 for (int i = 0; i < a.GetLength(0); i++)
                 {
                     for (int j = 0; j < a.GetLength(1); j++)
                     {
-                        if (minNumber > a[i, j])
+                        if (maxNumber > a[i, j])
                         {
-                            minNumber = a[i, j];
-                            index = $"{i},{j}";
+                            maxNumber = a[i, j];
+                            index = new int[] { i, j };
                         }
                     }
                 }
-                return index;
             }
-            else { return ""; }
+            return index;
 
         }
-        public string GetIndexOfMaxNumberOfArray(int[,] a)
+        public int[] GetIndexOfMaxNumberOfArray(int[,] a)
         {
+            int[] index = new int[] {};
             if (a.Length > 0)
             {
                 int maxNumber = a[0, 0];
-                string index = $"0,0";
+                
                 for (int i = 0; i < a.GetLength(0); i++)
                 {
                     for (int j = 0; j < a.GetLength(1); j++)
@@ -207,13 +207,12 @@ namespace Homework5
                         if (maxNumber < a[i, j])
                         {
                             maxNumber = a[i, j];
-                            index = $"{i},{j}";
+                            index = new int[] {i,j};
                         }
                     }
                 }
-                return index;
             }
-            else { return ""; }
+            return index;
         }
         public int GetCountOfElementsThatGreaterThanNeighbors(int[,] a)
         {

@@ -23,7 +23,7 @@ namespace GeneralProject
             //hw2.SolveTask3();
             //hw2.SolveTask4();
             //hw2.SolveTask5();
-            HW3 hw3 = new HW3();
+            //HW3 hw3 = new HW3();
             //hw3.SolveTask1();
             //hw3.SolveTask2();
             //hw3.SolveTask3();
@@ -35,7 +35,7 @@ namespace GeneralProject
             //hw3.SolveTask9();
             //hw3.SolveTask10();
             //hw3.SolveTask11();
-            hw3.SolveTask12();
+            //hw3.SolveTask12();
             //HW4 hw4 = new HW4();
             //hw4.SolveTask1();
             //hw4.SolveTask2();

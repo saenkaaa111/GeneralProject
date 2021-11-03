@@ -73,7 +73,7 @@ namespace Homework4
             {
                 Console.Write(item + "\t");
             }
-            GetReversArray(ref array);
+            GetReversArray(array);
             Console.WriteLine($"\nРезультат шестой задачи: ");
             foreach (var item in array)
             {
@@ -102,7 +102,7 @@ namespace Homework4
             {
                 Console.Write(item + "\t");
             }
-            SwapArray(ref array);
+            SwapArray(array);
             Console.WriteLine($"\nРезультат восьмой задачи: ");
             foreach (var item in array)
             {
@@ -162,6 +162,10 @@ namespace Homework4
         }
         public int GetMinNumberOfArray(int[] a)
         {
+            if (a.Length == 0)
+            {
+                return -1;
+            }
             int b = a[0];
             for (int i = 1; i <= a.Length; i++)
             {
@@ -178,6 +182,10 @@ namespace Homework4
         }
         public int GetMaxNumberOfArray(int[] a)
         {
+            if (a.Length == 0)
+            {
+                return -1;
+            }
             int b = a[0];
             for (int i = 1; i <= a.Length; i++)
             {
@@ -194,6 +202,10 @@ namespace Homework4
         }
         public int GetIndexOfMinNumberOfArray(int[] a)
         {
+            if (a.Length==0)
+            {
+                return -1;
+            }
             int b = a[0];
             int index = 0;
             for (int i = 1; i <= a.Length; i++)
@@ -212,6 +224,10 @@ namespace Homework4
         }
         public int GetIndexOfMaxNumberOfArray(int[] a)
         {
+            if (a.Length == 0)
+            {
+                return -1;
+            }
             int b = a[0];
             int index = 0;
             for (int i = 1; i <= a.Length; i++)
@@ -237,7 +253,7 @@ namespace Homework4
             }
             return sum;
         }
-        public void GetReversArray(ref int[] a)
+        public void GetReversArray(int[] a)
         {
             for (int i = 0; i < (a.Length / 2); i++)
             {
@@ -258,7 +274,7 @@ namespace Homework4
             }
             return sum;
         }
-        public void SwapArray(ref int[] a)
+        public void SwapArray(int[] a)
         {
             int middle;
             if (a.Length % 2 == 1)
