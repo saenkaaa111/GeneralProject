@@ -61,7 +61,6 @@ namespace Homework2.Tests
         [TestCase(99, "Девяносто девять")]
         [TestCase(10, "Десять")]
         [TestCase(20, "Двадцать ")]
-        [TestCase(100, "Число должно быть двухзначное")]
         [TestCase(9, "девять")]
         public void DisplayNumberInLettersTest(int a, string expected)
         {
@@ -71,8 +70,18 @@ namespace Homework2.Tests
             //assert
             Assert.AreEqual(expected, actual);
         }
-        
-        
+
+        [TestCase(100, "Число должно быть двухзначное")]
+        public void DisplayNumberInLettersNegativeTest(int a, string expectedMessage)
+        {
+            //arrange
+            //act
+            //assert
+            Exception ex = Assert.Throws(typeof(ArgumentException), () => _hw2.DisplayNumberInLetters(a));
+            Assert.AreEqual(expectedMessage, ex.Message);
+        }
+
+
         [TestCase(16, -8, 1, new double[] { 0.25 })]
         [TestCase(9, -6, 2, new double[] {})]
         [TestCase(2, 5, -7, new double[] { 1, -3.5 })]

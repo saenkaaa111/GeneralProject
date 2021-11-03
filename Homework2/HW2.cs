@@ -209,8 +209,7 @@ namespace Homework2
             string answer = "";
             if (a > 99)
             {
-                answer = "Число должно быть двухзначное";
-                return answer;
+                throw new ArgumentException( "Число должно быть двухзначное");
             }
             if (a >= 10 && a < 20)
             {
