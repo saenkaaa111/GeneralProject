@@ -1,4 +1,5 @@
 using NUnit.Framework;
+using System;
 
 namespace Homework2.Tests
 {
@@ -20,13 +21,12 @@ namespace Homework2.Tests
         public void CalcFormulaTest(int a, int b, int expected)
         {
             //arrange
-
             //act
             double actual = _hw2.CalcFormula(a, b);
-
             //assert
             Assert.AreEqual(expected, actual);
         }
+
 
         [TestCase(5, 3, 1)]
         [TestCase(-2, 3, 2)]
@@ -36,10 +36,8 @@ namespace Homework2.Tests
         public void DetermineQuarterTest(int a, int b, int expected)
         {
             //arrange
-
             //act
             double actual = _hw2.DetermineQuarter(a, b);
-
             //assert
             Assert.AreEqual(expected, actual);
         }
@@ -51,46 +49,52 @@ namespace Homework2.Tests
         public void SortVariablesTest(int a, int b, int c, string expected)
         {
             //arrange
-
             //act
             string actual = _hw2.SortVariables(a, b, c);
-
             //assert
             Assert.AreEqual(expected, actual);
         }
         
+
         [TestCase(15, "Пятнадцать")]
         [TestCase(90, "Девяносто ")]
         [TestCase(99, "Девяносто девять")]
+        [TestCase(10, "Десять")]
+        [TestCase(20, "Двадцать ")]
+        [TestCase(100, "Число должно быть двухзначное")]
+        [TestCase(9, "девять")]
         public void DisplayNumberInLettersTest(int a, string expected)
         {
             //arrange
-
             //act
             string actual = _hw2.DisplayNumberInLetters(a);
-
             //assert
             Assert.AreEqual(expected, actual);
         }
-        
         
         
         [TestCase(16, -8, 1, new double[] { 0.25 })]
         [TestCase(9, -6, 2, new double[] {})]
         [TestCase(2, 5, -7, new double[] { 1, -3.5 })]
+        [TestCase(4, 0, 0, new double[1] {0.0})]
         
         public void GetRootsOfEquationTest(int a, int b, int c, double[] expected)
         {
             //arrange
-
             //act
             double[] actual = _hw2.GetRootsOfEquation(a, b, c);
-
             //assert
             Assert.AreEqual(expected, actual);
         }
 
-
-
+        [TestCase(0, 6, 8, "На ноль делить нельзя!!")]
+        public void GetRootsOfEquationNegativeTest(int a, int b, int c, string expectedMessage)
+        {
+            //arrange
+            //act
+            //assert
+            Exception ex = Assert.Throws(typeof(DivideByZeroException), () => _hw2.GetRootsOfEquation(a, b, c));
+            Assert.AreEqual(expectedMessage, ex.Message);
+        }
     }
 }

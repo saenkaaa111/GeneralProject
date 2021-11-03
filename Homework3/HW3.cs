@@ -10,7 +10,7 @@ namespace Homework3
                 "число A в степень B.\n");
             int a = GetNumberFromUser("Введите число A:");
             int b = GetNumberFromUser("Введите число B:");
-            int result = RaiseNumberToPower(a, b);
+            long result = RaiseNumberToPower(a, b);
             Console.WriteLine($"Результат первой задачи: {result}");
         }
         public void SolveTask2()
@@ -114,10 +114,10 @@ namespace Homework3
             int number = Convert.ToInt32(Console.ReadLine());
             return number;
         }
-        public int RaiseNumberToPower(int a, int b)
+        public long RaiseNumberToPower(int a, int b)
         {
-            int result = 1;
-            for (int i = 1; i <= b; i++)
+            long result = 1;            
+            for (long i = 1; i <= b; i++)
             {
                 result *= a;
             }
@@ -138,6 +138,10 @@ namespace Homework3
         public int GetCountOfNumbersWithSquareLessThanNumberFromUser(int a)
         {
             int count = 0;
+            if (a<0)
+            {
+               throw new ArgumentException("Число не должно быть отрицательным");
+            }
             for (int i = 1; i < a; i++)
             {
                 if (Math.Pow(i, 2) < a)
@@ -150,6 +154,10 @@ namespace Homework3
         public int GetGreatestDivisor(int a)
         {
             int result = 0;
+            if (a <= 0)
+            {
+                throw new ArgumentException("Число не должно быть меньше нуля");
+            }
             for (int i = a - 1; i > 0; i--)
             {
                 if (a % i == 0)
@@ -190,6 +198,10 @@ namespace Homework3
             int numberNMinTwo = 1;
             int result;
             int counter = 3;
+            if (a <= 0)
+            {
+                throw new ArgumentException("Число не должно быть меньше нуля");
+            }
             do
             {
                 result = numberNMinOne + numberNMinTwo;
@@ -202,6 +214,10 @@ namespace Homework3
         public int GetGreatestCommonDivisorUsingEuclidAlgorithm(int a, int b)
         {
             int count = 0;
+            if (a <= 0 && b <= 0)
+            {
+                throw new ArgumentException("Число не должно быть меньше нуля");
+            }
             if (a < b)
             {
                 Swap(ref a, ref b);
@@ -276,6 +292,10 @@ namespace Homework3
         public string GetNumbersWhereSumOfEvenDigitsIsGreaterThanOdd (int a)
         {
             string result = "";
+            if (a <= 0)
+            {
+                throw new ArgumentException("Число не должно быть меньше нуля");
+            }
             for (int i = 1; i < a + 1; i++)
             {
                 int cycle = i;
@@ -308,6 +328,32 @@ namespace Homework3
         {
             int x = a;
             string result = "";
+            int mid;
+            if (a==0 || b==0)
+            {
+                if (a==0)
+                {
+                    mid = b;
+                }
+                else
+                {
+                    mid = a;
+                }
+                while (mid != 0)
+                {
+                    if (mid % 10 == 0)
+                    {
+                        result = "Да";
+                        break;
+                    }
+                    mid /= 10;
+                }
+            }
+            if (a == 0 && b == 0)
+            {
+                result = "Да";
+                return result;
+            }
             while (b != 0)
             {
                 while (a != 0)
@@ -322,6 +368,7 @@ namespace Homework3
                 b /= 10;
                 a = x;
             }
+            
             if (result == "")
             {
                 result = "Нет";

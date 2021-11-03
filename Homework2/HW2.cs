@@ -180,9 +180,12 @@ namespace Homework2
         }
         public double[] GetRootsOfEquation(int a, int b, int c)
         {
-
+            if (a == 0)
+            {
+                throw new DivideByZeroException("На ноль делить нельзя!!");
+            }
             double[] result;
-                double discriminant = Math.Pow(b, 2) - 4 * a * c;
+            double discriminant = Math.Pow(b, 2) - 4 * a * c;
             if (discriminant > 0)
             {
                 result = new double[] { (-b + Math.Sqrt(discriminant)) / (2 * a) , (-b - Math.Sqrt(discriminant)) / (2 * a) };
@@ -203,8 +206,12 @@ namespace Homework2
         {
             int result = a % 10;
             int result2 = a / 10;
-
             string answer = "";
+            if (a > 99)
+            {
+                answer = "Число должно быть двухзначное";
+                return answer;
+            }
             if (a >= 10 && a < 20)
             {
                 answer = result switch
@@ -227,20 +234,24 @@ namespace Homework2
             {
                 answer = result2 switch
                 {
-                    2 => "Двадцать ",
-                    3 => "Тридцать ",
-                    4 => "Сорок ",
-                    5 => "Пятьдесят ",
-                    6 => "Шестьдесят ",
-                    7 => "Семьдесят ",
-                    8 => "Восемьдесят ",
-                    9 => "Девяносто ",
+                    2 => "Двадцать",
+                    3 => "Тридцать",
+                    4 => "Сорок",
+                    5 => "Пятьдесят",
+                    6 => "Шестьдесят",
+                    7 => "Семьдесят",
+                    8 => "Восемьдесят",
+                    9 => "Девяносто",
                     _ => "",
 
                 };
+                if (answer!="")
+                {
+                    answer = answer + " ";
+                }
                 answer = result switch
                 {
-                    0 => answer + "",
+                    0 => answer,
                     1 => answer + "один",
                     2 => answer + "два",
                     3 => answer + "три",

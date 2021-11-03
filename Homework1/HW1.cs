@@ -67,6 +67,10 @@ namespace Homework1
         }
         public double CalcFormula(int a, int b)
         {
+            if (b == a)
+            {
+                throw new ArgumentException("Значения a и b должны быть разными");
+            }
             double result = ((5 * a) + Math.Pow(b, 2)) / (b - a);
             return result;
         }
@@ -81,30 +85,57 @@ namespace Homework1
             string variableReplace = a;
             a = b;
             b = variableReplace;
-                        
+
         }
         public int GetResultOfDivision(int a, int b)
         {
+            if (b == 0)
+            {
+                throw new DivideByZeroException("На ноль делить нельзя!!");
+            }
             int result = a / b;
             return result;
         }
         public double GetRemainderOfDivision(int a, int b)
         {
+            if (b == 0)
+            {
+                throw new DivideByZeroException("На ноль делить нельзя!!");
+            }
             double result = a % b;
             return result;
         }
         public double CalcEquation(int a, int b, int c)
         {
+            if (a == 0)
+            {
+                throw new DivideByZeroException("На ноль делить нельзя!!");
+            }
             double result = (double)(c - b) / a;
             return result;
         }
         public string DeriveEquationOfStraightLine(int a, int b, int c, int d)
         {
+            if (c == a)
+            {
+                throw new ArgumentException("Значения a и c должны быть разными");
+            }
             double variableA = ((1 - a) * (d - b)) / (c - a);
             double variableB = b;
-            string result = $"Y = {variableA}X + {variableB}";
+            string result;
+            if (b == 0)
+            {
+                result = $"Y = {variableA}X";
+            }
+            else if (b < 0)
+            {
+                result = $"Y = {variableA}X - {(-1) * variableB}";
+            }
+            else
+            {
+                result = $"Y = {variableA}X + {variableB}";
+            }
             return result;
         }
-
     }
 }
